@@ -30,12 +30,12 @@ public class PlayerController : MonoBehaviour
     public float groundDetectDistance = -.3f;
 
     private float gravityScaleBase = 0;
-    public bool glide = true;
 
     private bool doubleJumpReady = true;
 
-    public bool GrowthDone = false;
+    public float Pollen = 0;
     public float Stage = 1;
+    private bool GrowthDone = false;
     
     void Start()
     {
@@ -65,12 +65,19 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Physics2D.Raycast(raycastPos, Vector2.down, groundDetectDistance, 3))
             tempVelocity.y = jumpHeight;
 
-        if (glide)
+        if (Stage >= 1)
         {
             if (tempVelocity.y >= 0)
                 GetComponent<Rigidbody2D>().gravityScale = gravityScaleBase;
             else if (tempVelocity.y < 0)
                 GetComponent<Rigidbody2D>().gravityScale = .25f;
+            if (Stage == 1 && !GrowthDone)
+            {
+                hp = 5;
+                maxhp = 5;
+                damage = 1;
+                GrowthDone = true;
+            }
         }
 
         if (Stage >= 2)
@@ -82,7 +89,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Physics2D.Raycast(raycastPos, Vector2.down, groundDetectDistance, 3))
                 doubleJumpReady = true;
-            if (!GrowthDone)
+            if (Stage == 2 && !GrowthDone)
             {
                 hp = 10;
                 maxhp = 10;
@@ -91,28 +98,20 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Stage >= 3)
+        if (Stage == 3 && !GrowthDone)
         {
-            GrowthDone = false;
-            if (!GrowthDone)
-            {
-                hp = 10;
-                maxhp = 10;
-                damage = 2;
-                GrowthDone = true;
-            }
+            hp = 15;
+            maxhp = 15;
+            damage = 2;
+            GrowthDone = true;
         }
 
-        if (Stage >= 4)
+        if (Stage == 4 && !GrowthDone)
         {
-            GrowthDone = false;
-            if (!GrowthDone)
-            {
-                hp = 20;
-                maxhp = 20;
-                damage = 2;
-                GrowthDone = true;
-            }
+            hp = 20;
+            maxhp = 20;
+            damage = 2;
+            GrowthDone = true;
         }
 
         if (canShoot)
@@ -167,7 +166,8 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForSeconds(burstRate);
                 GameObject b2 = Instantiate(bullet, transform.position, Quaternion.identity);
                 Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), b2.GetComponent<PolygonCollider2D>());
-                Physics2D.IgnoreCollision(firstBulletCollider, b2.GetComponent<PolygonCollider2D>());
+                if (firstBulletCollider != null)
+                    Physics2D.IgnoreCollision(firstBulletCollider, b2.GetComponent<PolygonCollider2D>());
                 b2.GetComponent<Rigidbody2D>().rotation = angle;
                 b2.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * bulletSpeed);
                 
@@ -178,9 +178,30 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.gameObject.tag == "Enemy"))
+        if ((collision.gameObject.tag == "Enemy1"))
         {
             hp -= 1;
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        //Move the Enemies damage here so it constantly damages the player but on a cooldown
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ((collision.gameObject.tag == "Pollen"))
+        {
+            Destroy(collision.gameObject);
+            Pollen++;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if ((collision.gameObject.tag == "SunLight") && Pollen >= 5)
+        {
+            Pollen -= 5;
+            GrowthDone = false;
+            Stage++;
         }
     }
 }

@@ -3,7 +3,13 @@ guid: f61e5a19c72dded4d9140bf67e59f9bb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - myRB: {instanceID: 0}
+  - bullet: {fileID: 841005850481721854, guid: aa8e36725812edb4ea825246f77e1816, type: 3}
+  - Crosshair: {instanceID: 0}
+  - slash: {fileID: 4694710030906417238, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
+  - slashReach: {instanceID: 0}
+  - gameManager: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
