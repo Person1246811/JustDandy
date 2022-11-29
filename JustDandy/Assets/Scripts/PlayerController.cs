@@ -6,36 +6,45 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D myRB;
     public GameObject bullet;
+    public GameObject Crosshair;
     public GameObject slash;
     public Transform slashReach;
+    public GameObject gameManager;
+
+    public float hp = 5;
+    public float maxhp = 5;
+    public float damage = 1;
+    private float angle = 0;
 
     public float slashLifespan = .2f;
-
     public float bulletSpeed = 1000;
     public float fireRate = .5f;
-    private float bulletLifespan = 1;
+    public float bulletLifespan = 1;
     private float fireCountdown = 0;
     private bool canShoot = true;
+    public float burstRate = .1f;
+    public int burstSize = 2;
 
     public float moveSpeed = 10;
     public float jumpHeight = 15;
     public float groundDetectDistance = -.3f;
 
     private float gravityScaleBase = 0;
-    private bool glide = true;
+    public bool glide = true;
 
     private bool doubleJumpReady = true;
 
+    public bool GrowthDone = false;
     public float Stage = 1;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
+        Crosshair = GameObject.Find("Crosshair");
+        gameManager = GameObject.Find("GameManager");
         gravityScaleBase = GetComponent<Rigidbody2D>().gravityScale;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         //mousePos on screen
@@ -43,9 +52,11 @@ public class PlayerController : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 distance = new Vector2(transform.position.y - mousePos.y, transform.position.x - mousePos.x);
         //rotation towards mouse
-        float angle = (Mathf.Atan2(distance.x, distance.y) * Mathf.Rad2Deg) + 180;
+        angle = (Mathf.Atan2(distance.x, distance.y) * Mathf.Rad2Deg) + 180;
         //Right = direction
         myRB.rotation = angle;
+
+        Crosshair.transform.position = new Vector2(mousePos.x, mousePos.y);
 
         Vector2 raycastPos = new Vector2(transform.position.x, transform.position.y - .51f);
         Vector2 tempVelocity = myRB.velocity;
@@ -71,6 +82,37 @@ public class PlayerController : MonoBehaviour
             }
             if (Physics2D.Raycast(raycastPos, Vector2.down, groundDetectDistance, 3))
                 doubleJumpReady = true;
+            if (!GrowthDone)
+            {
+                hp = 10;
+                maxhp = 10;
+                damage = 1;
+                GrowthDone = true;
+            }
+        }
+
+        if (Stage >= 3)
+        {
+            GrowthDone = false;
+            if (!GrowthDone)
+            {
+                hp = 10;
+                maxhp = 10;
+                damage = 2;
+                GrowthDone = true;
+            }
+        }
+
+        if (Stage >= 4)
+        {
+            GrowthDone = false;
+            if (!GrowthDone)
+            {
+                hp = 20;
+                maxhp = 20;
+                damage = 2;
+                GrowthDone = true;
+            }
         }
 
         if (canShoot)
@@ -83,14 +125,17 @@ public class PlayerController : MonoBehaviour
                 b.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * bulletSpeed);
                 canShoot = false;
                 Destroy(b, bulletLifespan);
+                //Shoots the Burst
+                StartCoroutine(BurstDelay(b.GetComponent<PolygonCollider2D>()));
+                
             }
             if (Input.GetKey(KeyCode.Mouse1))
             {
-                GameObject s = Instantiate(slash, slashReach.position, Quaternion.identity);
+                GameObject s = Instantiate(slash, transform);
                 s.GetComponent<Rigidbody2D>().rotation = angle;
                 Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), s.GetComponent<CapsuleCollider2D>());
-                canShoot = false;
                 s.transform.position = slashReach.position;
+                canShoot = false;
                 Destroy(s, slashLifespan);
             }
         }
@@ -104,6 +149,38 @@ public class PlayerController : MonoBehaviour
                 canShoot = true;
             }
         }
+
         myRB.velocity = tempVelocity;
+
+        if (hp <= 0)
+        {
+            gameManager.GetComponent<GameManager>().LoadLevel(1);
+        }
+    }
+
+    IEnumerator BurstDelay(PolygonCollider2D firstBulletCollider)
+    {
+        if (Stage >= 4)
+        {
+            for (int i = 0;i < burstSize;i++)
+            {
+                yield return new WaitForSeconds(burstRate);
+                GameObject b2 = Instantiate(bullet, transform.position, Quaternion.identity);
+                Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), b2.GetComponent<PolygonCollider2D>());
+                Physics2D.IgnoreCollision(firstBulletCollider, b2.GetComponent<PolygonCollider2D>());
+                b2.GetComponent<Rigidbody2D>().rotation = angle;
+                b2.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * bulletSpeed);
+                
+                Destroy(b2, bulletLifespan);
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if ((collision.gameObject.tag == "Enemy"))
+        {
+            hp -= 1;
+        }
     }
 }
