@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AphidController : MonoBehaviour
+public class BeetleController : MonoBehaviour
 {
-    public float jumpPower = 10f;
-    public float jumpRate = 1000f;
-    [SerializeField] private float jumpTimer = 0.15f;
+    public float movePower = 300f;
+    public float moveRate = -1f;
+    [SerializeField] private float moveTimer = 3f;
     public Rigidbody2D myRB;
-    public bool jumpright = true;
-    public float health = 1;
+    public float health = 2;
+    public Transform Player;
 
     int direction = 1;
 
@@ -23,9 +23,10 @@ public class AphidController : MonoBehaviour
     void Update()
     {
 
-        if (Time.time > jumpRate)
+        if (Time.time > moveRate)
         {
-            Jump();
+            myRB.velocity = Vector2.zero;
+            Move();
 
             if (direction == 1)
                 direction = -1;
@@ -33,17 +34,20 @@ public class AphidController : MonoBehaviour
                 direction = 1;
         }
 
-        if (health == 0)
+        if(health == 0)
         {
             Destroy(gameObject);
         }
+
     }
 
-    void Jump()
+    void Move()
     {
-        myRB.AddForce(new Vector2(direction*1, 1) * jumpPower);
-        jumpRate = Time.time + jumpTimer;
+        myRB.AddForce(new Vector2(direction, 0) * movePower);
+        moveRate = Time.time + moveTimer;
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -51,5 +55,12 @@ public class AphidController : MonoBehaviour
         {
             health--;
         }
+    }
+
+    private void OnTriggerEnter2D(CircleCollider2D collision)
+    {
+        transform.LookAt(Player);
+
+        transform.position += transform.forward * movePower * Time.deltaTime;
     }
 }
