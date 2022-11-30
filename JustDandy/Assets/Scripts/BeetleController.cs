@@ -10,6 +10,7 @@ public class BeetleController : MonoBehaviour
     public Rigidbody2D myRB;
     public float health = 2;
     public Transform Player;
+    
 
     int direction = 1;
 
@@ -57,10 +58,12 @@ public class BeetleController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(CircleCollider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        transform.LookAt(Player);
-
-        transform.position += transform.forward * movePower * Time.deltaTime;
+        if (collision.gameObject.tag == "Attack")
+        {
+            health--;
+        }
     }
+
 }
