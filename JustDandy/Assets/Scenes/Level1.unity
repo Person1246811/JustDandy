@@ -611,7 +611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRB: {fileID: 0}
   bullet: {fileID: 841005850481721854, guid: aa8e36725812edb4ea825246f77e1816, type: 3}
-  Crosshair: {fileID: 0}
+  Crosshair: {fileID: 1319873546}
   slash: {fileID: 4694710030906417238, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
   slashReach: {fileID: 1673804124}
   gameManager: {fileID: 0}
@@ -622,7 +622,7 @@ MonoBehaviour:
   bulletSpeed: 1000
   fireRate: 0.5
   bulletLifespan: 1
-  burstRate: 0.1
+  burstRate: 0.075
   burstSize: 2
   moveSpeed: 10
   jumpHeight: 15
