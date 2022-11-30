@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public float bulletLifespan = 1;
     private float fireCountdown = 0;
     private bool canShoot = true;
-    public float burstRate = .1f;
+    public float burstRate = .075f;
     public int burstSize = 2;
 
     public float moveSpeed = 10;
@@ -178,15 +178,31 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Aphid
         if ((collision.gameObject.tag == "Enemy1"))
         {
-            hp -= 1;
+            hp--;
+        }
+
+        //Beetle
+        if ((collision.gameObject.tag == "Enemy2"))
+        {
+            hp -= 2;
+        }
+
+        //Snail or Slug
+        if ((collision.gameObject.tag == "Enemy3"))
+        {
+            hp -= 4;
+        }
+
+        //Snail or Slug
+        if ((collision.gameObject.tag == "Enemy4"))
+        {
+            hp -= 4;
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        //Move the Enemies damage here so it constantly damages the player but on a cooldown
-    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if ((collision.gameObject.tag == "Pollen"))
@@ -195,6 +211,7 @@ public class PlayerController : MonoBehaviour
             Pollen++;
         }
     }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if ((collision.gameObject.tag == "SunLight") && Pollen >= 5)
