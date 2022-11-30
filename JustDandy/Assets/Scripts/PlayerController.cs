@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public float maxhp = 5;
     public float damage = 1;
     private float angle = 0;
+    private bool enemyAttack = true;
+    public float enemyAttackCooldown = .5f;
+    private float enemyAttackCountdown = 0;
 
     public float slashLifespan = .2f;
     public float bulletSpeed = 1000;
@@ -26,11 +29,11 @@ public class PlayerController : MonoBehaviour
     public int burstSize = 2;
 
     public float moveSpeed = 10;
-    public float jumpHeight = 15;
+    public float jumpHeight = 12;
     public float groundDetectDistance = -.3f;
 
     private float gravityScaleBase = 0;
-
+    public float glideAmount = .25f;
     private bool doubleJumpReady = true;
 
     public float Pollen = 0;
@@ -70,7 +73,7 @@ public class PlayerController : MonoBehaviour
             if (tempVelocity.y >= 0)
                 GetComponent<Rigidbody2D>().gravityScale = gravityScaleBase;
             else if (tempVelocity.y < 0)
-                GetComponent<Rigidbody2D>().gravityScale = .25f;
+                GetComponent<Rigidbody2D>().gravityScale = glideAmount;
             if (Stage == 1 && !GrowthDone)
             {
                 hp = 5;
@@ -151,6 +154,16 @@ public class PlayerController : MonoBehaviour
 
         myRB.velocity = tempVelocity;
 
+        if (!enemyAttack)
+        {
+            enemyAttackCountdown += Time.deltaTime;
+            if (enemyAttackCountdown >= enemyAttackCooldown)
+            {
+                enemyAttackCountdown = 0;
+                enemyAttack = true;
+            }
+        }
+
         if (hp <= 0)
         {
             gameManager.GetComponent<GameManager>().LoadLevel(1);
@@ -176,36 +189,43 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        //Aphid
-        if ((collision.gameObject.tag == "Enemy1"))
+        if (enemyAttack)
         {
-            hp--;
-        }
+            //Aphid
+            if ((collision.gameObject.tag == "Enemy1"))
+            {
+                enemyAttack = false;
+                hp--;
+            }
 
-        //Beetle
-        if ((collision.gameObject.tag == "Enemy2"))
-        {
-            hp -= 2;
-        }
+            //Beetle
+            if ((collision.gameObject.tag == "Enemy2"))
+            {
+                enemyAttack = false;
+                hp -= 2;
+            }
 
-        //Snail or Slug
-        if ((collision.gameObject.tag == "Enemy3"))
-        {
-            hp -= 4;
-        }
+            //Snail or Slug
+            if ((collision.gameObject.tag == "Enemy3"))
+            {
+                enemyAttack = false;
+                hp -= 4;
+            }
 
-        //Snail or Slug
-        if ((collision.gameObject.tag == "Enemy4"))
-        {
-            hp -= 4;
+            //Snail or Slug
+            if ((collision.gameObject.tag == "Enemy4"))
+            {
+                enemyAttack = false;
+                hp -= 4;
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.tag == "Pollen"))
+        if ((collision.gameObject.tag == "Pollen"))// && (collision.gameObject.GetComponent<CircleCollider2D>() != null)
         {
             Destroy(collision.gameObject);
             Pollen++;

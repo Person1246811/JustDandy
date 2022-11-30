@@ -113,11 +113,12 @@ MonoBehaviour:
   bulletSpeed: 1000
   fireRate: 0.5
   bulletLifespan: 1
-  burstRate: 0.1
+  burstRate: 0.075
   burstSize: 2
   moveSpeed: 10
-  jumpHeight: 15
+  jumpHeight: 12
   groundDetectDistance: -0.3
+  glideAmount: 0.25
   Pollen: 0
   Stage: 1
 --- !u!58 &3564595002042371808
