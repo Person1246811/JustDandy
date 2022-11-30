@@ -52,4 +52,12 @@ public class AphidController : MonoBehaviour
             health--;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Attack")
+        {
+            health--;
+        }
+    }
 }
