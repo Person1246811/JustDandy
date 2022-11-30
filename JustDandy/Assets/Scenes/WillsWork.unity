@@ -564,10 +564,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9200348237001689085, guid: 97fc2a3c9390ed6488d81a8b09059028, type: 3}
-      propertyPath: m_Constraints
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 9200348237001689086, guid: 97fc2a3c9390ed6488d81a8b09059028, type: 3}
       propertyPath: Player
       value: 
@@ -620,7 +616,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beetle
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1012470712311839547, guid: 97fc2a3c9390ed6488d81a8b09059028, type: 3}
+    m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 97fc2a3c9390ed6488d81a8b09059028, type: 3}

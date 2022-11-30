@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9200348237001689085}
   - component: {fileID: 9200348237001717762}
   - component: {fileID: 9200348237001689086}
-  - component: {fileID: 1012470712311839547}
   m_Layer: 0
   m_Name: Beetle
   m_TagString: Enemy2
@@ -108,7 +107,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 6
 --- !u!60 &9200348237001717762
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -157,19 +156,3 @@ MonoBehaviour:
   myRB: {fileID: 9200348237001689085}
   health: 2
   Player: {fileID: 0}
---- !u!58 &1012470712311839547
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9200348237001717763}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 3.5
