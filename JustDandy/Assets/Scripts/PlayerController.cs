@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.tag == "Pollen"))// && (collision.gameObject.GetComponent<CircleCollider2D>() != null)
+        if ((collision.gameObject.tag == "Pollen"))
         {
             Destroy(collision.gameObject);
             Pollen++;

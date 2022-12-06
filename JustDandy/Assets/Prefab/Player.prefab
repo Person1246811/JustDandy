@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3564595002042371823}
   - component: {fileID: 3564595002042371808}
   - component: {fileID: 3564595002042371809}
+  - component: {fileID: 6100917935377261515}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -109,6 +110,7 @@ MonoBehaviour:
   hp: 5
   maxhp: 5
   damage: 1
+  enemyAttackCooldown: 0.5
   slashLifespan: 0.2
   bulletSpeed: 1000
   fireRate: 0.5
@@ -158,6 +160,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &6100917935377261515
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3564595002042371810}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4.37
 --- !u!1 &3564595003302456540
 GameObject:
   m_ObjectHideFlags: 0

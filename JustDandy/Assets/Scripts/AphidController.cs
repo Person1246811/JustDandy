@@ -6,17 +6,18 @@ public class AphidController : MonoBehaviour
 {
     public float jumpPower = 10f;
     public float jumpRate = 1000f;
+    public bool jumpTowards = false;
     [SerializeField] private float jumpTimer = 0.15f;
     public Rigidbody2D myRB;
-    public bool jumpright = true;
     public float health = 1;
+    public Transform player;
 
     int direction = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -27,16 +28,28 @@ public class AphidController : MonoBehaviour
         {
             Jump();
 
-            if (direction == 1)
-                direction = -1;
-            else if (direction == -1)
-                direction = 1;
+            if (jumpTowards)
+            {
+                if (transform.position.x > player.transform.position.x)
+                    direction = -1;
+
+                if (transform.position.x < player.transform.position.x)
+                    direction = 1;
+            }
+            else
+            {
+                if (direction == 1)
+                    direction = -1;
+                else if (direction == -1)
+                    direction = 1;
+            }
         }
 
         if (health == 0)
         {
             Destroy(gameObject);
         }
+        
     }
 
     void Jump()
@@ -47,10 +60,16 @@ public class AphidController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Attack")
+        if (collision.gameObject.tag == "Player")
         {
-            health--;
+            jumpTowards = true;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            jumpTowards = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
