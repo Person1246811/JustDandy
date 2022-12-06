@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class BeetleController : MonoBehaviour
 {
-    public float movePower = 300f;
-    public float moveRate = -1f;
-    [SerializeField] private float moveTimer = 3f;
-    public Rigidbody2D myRB;
-    public float health = 2;
-    public Transform Player;
-    
+    public bool isPatrol = true;
+    public bool nonFollow = true;
 
-    int direction = 1;
+    public Rigidbody2D myRb;
+
+    public float moveSpeed;
+    public float targetTime = 10.0f;
+    public float patrolSpeed;
+
+    public Transform target;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,47 +25,63 @@ public class BeetleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        targetTime -= Time.deltaTime;
 
-        if (Time.time > moveRate)
+        if (nonFollow == true)
         {
-            myRB.velocity = Vector2.zero;
-            Move();
+            if (isPatrol)
+            {
+                Patrol();
 
-            if (direction == 1)
-                direction = -1;
-            else if (direction == -1)
-                direction = 1;
+                if (targetTime <= 0.0f)
+                {
+                    Flip();
+                    targetTime = 10.0f;
+                }
+            }
         }
 
-        if(health == 0)
+        else if(nonFollow == false)
         {
-            Destroy(gameObject);
+            Vector2 lookPos = target.position - transform.position;
+            myRb.rotation = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+            
+            myRb.velocity = lookPos * moveSpeed;
         }
-
     }
 
-    void Move()
+    
+    void Patrol()
     {
-        myRB.AddForce(new Vector2(direction, 0) * movePower);
-        moveRate = Time.time + moveTimer;
+        myRb.velocity = new Vector2(patrolSpeed * Time.fixedDeltaTime, myRb.velocity.y);
     }
 
-
+    void Flip()
+    {
+        isPatrol = false;
+        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+        patrolSpeed *= -1;
+        isPatrol = true;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Attack")
+        if (collision.gameObject.tag == "Player" && collision.GetComponent<CircleCollider2D>() != null)
         {
-            health--;
+            nonFollow = false;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Attack")
+        if (collision.gameObject.tag == "Player" && collision.GetComponent<CircleCollider2D>() != null)
         {
-            health--;
+            nonFollow = true;
+            isPatrol = true;
+            myRb.velocity = new Vector2(0, 0);
+            gameObject.transform.rotation = Quaternion.identity;
         }
     }
 
+    
 }
