@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8226869640623970586}
   - component: {fileID: 6974148051479384992}
   - component: {fileID: 7809150401791211250}
+  - component: {fileID: 9221122542000382181}
   m_Layer: 2
   m_Name: slash
   m_TagString: Attack
@@ -123,3 +124,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &9221122542000382181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4694710030906417238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de54b305153c01840866cda897ce555f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beetle: {fileID: 9200348237001689086, guid: 97fc2a3c9390ed6488d81a8b09059028, type: 3}

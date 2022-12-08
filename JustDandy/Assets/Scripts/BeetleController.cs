@@ -12,6 +12,7 @@ public class BeetleController : MonoBehaviour
     public float moveSpeed;
     public float targetTime = 10.0f;
     public float patrolSpeed;
+    public float health = 2;
 
     public Transform target;
 
@@ -48,6 +49,11 @@ public class BeetleController : MonoBehaviour
             
             myRb.velocity = lookPos * moveSpeed;
         }
+
+        if (health == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     
@@ -66,10 +72,13 @@ public class BeetleController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.tag == "Player" && collision.GetComponent<CircleCollider2D>() != null)
         {
             nonFollow = false;
         }
+
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -83,5 +92,11 @@ public class BeetleController : MonoBehaviour
         }
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Attack")
+        {
+            health--;
+        }
+    }
 }
