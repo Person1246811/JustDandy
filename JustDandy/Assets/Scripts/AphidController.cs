@@ -26,8 +26,6 @@ public class AphidController : MonoBehaviour
 
         if (Time.time > jumpRate)
         {
-            Jump();
-
             if (jumpTowards)
             {
                 if (transform.position.x > player.transform.position.x)
@@ -43,9 +41,11 @@ public class AphidController : MonoBehaviour
                 else if (direction == -1)
                     direction = 1;
             }
+
+            Jump();
         }
 
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }

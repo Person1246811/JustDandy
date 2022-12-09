@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public GameObject Crosshair;
     public GameObject slash;
-    public Rigidbody2D RotateSlashReach;
     public GameObject gameManager;
 
     public float hp = 5;
@@ -56,12 +55,10 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 distance = new Vector2(transform.position.y - mousePos.y, transform.position.x - mousePos.x);
-        Vector2 moveDir = new Vector2(transform.position.x - mousePos.x, transform.position.y - mousePos.y);
         //rotation towards mouse
         angle = (Mathf.Atan2(distance.x, distance.y) * Mathf.Rad2Deg) + 180;
 
-        RotateSlashReach.rotation = angle;
-        RotateSlashReach.velocity = -moveDir;
+        slash.GetComponent<Rigidbody2D>().rotation = angle;
 
         Crosshair.transform.position = new Vector2(mousePos.x, mousePos.y);
 

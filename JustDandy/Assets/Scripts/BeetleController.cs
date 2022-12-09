@@ -11,7 +11,7 @@ public class BeetleController : MonoBehaviour
 
     public float moveSpeed;
     public float targetTime = 10.0f;
-    public float patrolSpeed;
+    public float patrolSpeed = 35;
     public float health = 2;
 
     public Transform target;
@@ -20,7 +20,7 @@ public class BeetleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        target = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -50,7 +50,7 @@ public class BeetleController : MonoBehaviour
             myRb.velocity = lookPos * moveSpeed;
         }
 
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
@@ -89,6 +89,14 @@ public class BeetleController : MonoBehaviour
             isPatrol = true;
             myRb.velocity = new Vector2(0, 0);
             gameObject.transform.rotation = Quaternion.identity;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Attack")
+        {
+            health--;
         }
     }
 }
