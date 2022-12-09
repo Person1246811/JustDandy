@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public GameObject Crosshair;
     public GameObject slash;
-    public Transform slashReach;
+    public Rigidbody2D RotateSlashReach;
     public GameObject gameManager;
 
     public float hp = 5;
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float enemyAttackCooldown = .5f;
     private float enemyAttackCountdown = 0;
 
+    public float SlashOffRate = .2f;
     public float slashLifespan = .2f;
     public float bulletSpeed = 1000;
     public float fireRate = .5f;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 10;
     public float jumpHeight = 12;
     public float groundDetectDistance = -.3f;
+    public bool allowedToMove = true;
 
     private float gravityScaleBase = 0;
     public float glideAmount = .25f;
@@ -54,10 +56,12 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 distance = new Vector2(transform.position.y - mousePos.y, transform.position.x - mousePos.x);
+        Vector2 moveDir = new Vector2(transform.position.x - mousePos.x, transform.position.y - mousePos.y);
         //rotation towards mouse
         angle = (Mathf.Atan2(distance.x, distance.y) * Mathf.Rad2Deg) + 180;
-        //Right = direction
-        myRB.rotation = angle;
+
+        RotateSlashReach.rotation = angle;
+        RotateSlashReach.velocity = -moveDir;
 
         Crosshair.transform.position = new Vector2(mousePos.x, mousePos.y);
 
@@ -129,16 +133,15 @@ public class PlayerController : MonoBehaviour
                 Destroy(b, bulletLifespan);
                 //Shoots the Burst
                 StartCoroutine(BurstDelay(b.GetComponent<PolygonCollider2D>()));
-                
+
             }
             if (Input.GetKey(KeyCode.Mouse1))
             {
-                GameObject s = Instantiate(slash, transform);
-                s.GetComponent<Rigidbody2D>().rotation = angle;
-                Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), s.GetComponent<CapsuleCollider2D>());
-                s.transform.position = slashReach.position;
+                slash.GetComponent<SpriteRenderer>().enabled = true;
+                slash.GetComponent<CapsuleCollider2D>().enabled = true;
                 canShoot = false;
-                Destroy(s, slashLifespan);
+                // Add delay to slash staying active
+                StartCoroutine(SlashOff(slash));
             }
         }
 
@@ -152,7 +155,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        myRB.velocity = tempVelocity;
+        if (allowedToMove)
+            myRB.velocity = tempVelocity;
+        else
+            myRB.velocity = new Vector2(0, 0);
 
         if (!enemyAttack)
         {
@@ -187,6 +193,13 @@ public class PlayerController : MonoBehaviour
                 Destroy(b2, bulletLifespan);
             }
         }
+    }
+
+    IEnumerator SlashOff(GameObject slash)
+    {
+        yield return new WaitForSeconds(SlashOffRate);
+        slash.GetComponent<SpriteRenderer>().enabled = false;
+        slash.GetComponent<CapsuleCollider2D>().enabled = false;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
