@@ -467,6 +467,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &374352560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8295261128181538732, guid: fff6e85b4a67260448bda233424a55d5, type: 3}
+  m_PrefabInstance: {fileID: 29262060}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &374352561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374352560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdce4826a433c9040bdade5195aa246b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &399306105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -700,6 +717,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &665143057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665143055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdce4826a433c9040bdade5195aa246b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &686021477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4694710030906417238, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
       propertyPath: m_Name
-      value: slash
+      value: Slash
       objectReference: {fileID: 0}
     - target: {fileID: 6974148051479384992, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
       propertyPath: m_Mass
@@ -1016,7 +1045,19 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6974148051479384992, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974148051479384992, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7809150401791211250, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226869640623970586, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
