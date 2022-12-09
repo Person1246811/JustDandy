@@ -4,36 +4,34 @@ using UnityEngine;
 
 public class SlugController : MonoBehaviour
 {
-    public Transform Player;
-    int MoveSpeed = 4;
-    int MaxDist = 10;
-    int MinDist = 5;
 
+    public Rigidbody2D myRb;
 
+    public  GameObject player;
 
+    public float moveSpeed = 10;
+
+    public float Distance = 0;
 
     void Start()
     {
-
+        player = GameObject.FindWithTag("Player");
     }
 
     void Update()
     {
-        transform.LookAt(Player);
-
-        if (Vector3.Distance(transform.position, Player.position) >= MinDist)
-        {
-
-            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-
-
-
-            if (Vector3.Distance(transform.position, Player.position) <= MaxDist)
-            {
-                //Here Call any function U want Like Shoot at here or something
-            }
-
-        }
+        Distance = player.transform.position.x - transform.position.x;
+        if (Distance >= 2.5f || Distance <= -2.5f)
+            Debug.Log(Distance);
+        else
+            Debug.Log("It works");
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            myRb.AddForce(new Vector2(player.transform.position.x * moveSpeed, 0));
+        }
+    }
 }
