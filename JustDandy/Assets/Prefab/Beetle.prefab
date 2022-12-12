@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1469876772}
   - component: {fileID: 1469876773}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Detection
   m_TagString: Detection
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 9200348237001717762}
   - component: {fileID: 9200348237001689086}
   - component: {fileID: 187627449}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Beetle
   m_TagString: Enemy2
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9200348237001717763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.85, y: -1.04, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.4798, y: 1.4398, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

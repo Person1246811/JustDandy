@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     private bool doubleJumpReady = true;
 
     public float Pollen = 0;
-    public float Stage = 1;
+    public int Stage = 1;
     private bool GrowthDone = false;
     
     void Start()
