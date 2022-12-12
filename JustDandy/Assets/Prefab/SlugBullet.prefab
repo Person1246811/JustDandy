@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3730023121844678}
   - component: {fileID: 8885749168104162717}
+  - component: {fileID: 689061724}
   m_Layer: 0
   m_Name: SlugBullet
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8885749168104162717
 SpriteRenderer:
@@ -84,3 +85,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &689061724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7797722902377711331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9616fcbe790e6b4f9b160a809d87b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slug: {fileID: 8033837351472699366, guid: 0f15494a844633b4fb66b093eb4cf54c, type: 3}
+  target: {fileID: 4853033308392380001, guid: 1176968b4ce0e4d4cafd335d6bfbdb76, type: 3}
+  speed: 10
