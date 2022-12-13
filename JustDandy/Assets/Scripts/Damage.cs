@@ -35,5 +35,15 @@ public class Damage : MonoBehaviour
             collision.gameObject.GetComponent<BeetleController>().health--;
             CanAttack = false;
         }
+        /*if (collision.gameObject.tag == "Enemy3" && CanAttack)
+        {
+            collision.gameObject.GetComponent<SlugController>().health--;
+            CanAttack = false;
+        }
+        if (collision.gameObject.tag == "Enemy4" && CanAttack)
+        {
+            collision.gameObject.GetComponent<SnailController>().health--;
+            CanAttack = false;
+        }*/
     }
 }

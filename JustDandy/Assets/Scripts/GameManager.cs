@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public PlayerController player;
     public Image healthBar;
+    public TextMeshProUGUI stageText;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
             healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
+            stageText = GameObject.Find("StageNumber").GetComponent<TextMeshProUGUI>();
         }
     }
 
@@ -23,7 +26,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
             healthBar.fillAmount = player.hp / player.maxhp;
+            stageText.text = "Stage: " + player.Stage.ToString();
+        }
     }
 
     public void StartGame()
