@@ -228,7 +228,7 @@ public class PlayerController : MonoBehaviour
             if ((collision.gameObject.tag == "Enemy4"))
             {
                 enemyAttack = false;
-                hp -= 4;
+                hp -= 2;
             }
         }
     }
