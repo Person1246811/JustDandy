@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4032700573161659534}
   - component: {fileID: 4032700573161659533}
-  - component: {fileID: 4032700573161659532}
   - component: {fileID: 4032700573161660272}
   - component: {fileID: 4032700573161659535}
-  m_Layer: 0
+  - component: {fileID: 4032700573161659532}
+  m_Layer: 2
   m_Name: Snail
   m_TagString: Enemy4
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 4032700574652199630}
   - {fileID: 4032700574401009042}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4032700573161659533
 SpriteRenderer:
@@ -89,22 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4032700573161659532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4032700573161659531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffae7a7bb4b9eb94ea955b2021901c6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  distance: 2
-  health: 6
-  groundDetechtion: {fileID: 4032700574401009042}
 --- !u!61 &4032700573161660272
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,6 +136,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4032700573161659532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032700573161659531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffae7a7bb4b9eb94ea955b2021901c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  distance: 2
+  health: 6
+  myRb: {fileID: 0}
+  groundDetechtion: {fileID: 4032700574401009042}
 --- !u!1 &4032700574401009041
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4032700574401009042}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GroundDetechtion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4032700574652199630}
   - component: {fileID: 4032700574652199631}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
