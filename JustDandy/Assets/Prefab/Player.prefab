@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4853033308392380012}
   - component: {fileID: 4853033308392380003}
   - component: {fileID: 4853033308392380002}
+  - component: {fileID: 2517697956498795847}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -105,6 +106,7 @@ MonoBehaviour:
   Crosshair: {fileID: 0}
   slash: {fileID: 3684221814501714360}
   gameManager: {fileID: 0}
+  myAnim: {fileID: 0}
   hp: 5
   maxhp: 5
   damage: 1
@@ -160,6 +162,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &2517697956498795847
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4853033308392380001}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6e6e00017d9d324d865478e591464b6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8216265420022041070
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class BeetleController : MonoBehaviour
     void Start()
     {
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        myRb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -48,6 +49,15 @@ public class BeetleController : MonoBehaviour
             myRb.rotation = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
             
             myRb.velocity = lookPos * moveSpeed;
+        }
+
+        if (myRb.velocity.x > .1)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (myRb.velocity.x < -.1)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
         }
 
         if (health <= 0)

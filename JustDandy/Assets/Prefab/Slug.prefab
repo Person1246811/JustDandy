@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 4101140023313507537}
   - component: {fileID: -2563262680817373094}
   - component: {fileID: 18453175}
+  - component: {fileID: -3168916586765731360}
   m_Layer: 2
   m_Name: Slug
   m_TagString: Untagged
@@ -149,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRb: {fileID: -2563262680817373094}
+  myAnim: {fileID: 0}
   health: 3
   player: {fileID: 0}
   playerRange: 8
@@ -204,3 +206,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &-3168916586765731360
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033837351472699366}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d19d0339bdbd1c349856dd2d462551a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

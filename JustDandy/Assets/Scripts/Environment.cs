@@ -15,6 +15,7 @@ public class Environment : MonoBehaviour
     {
         if (isParallax)
         {
+            cam = GameObject.Find("Main Camera");
             startposX = transform.position.x;
             startposY = transform.position.y;
         }

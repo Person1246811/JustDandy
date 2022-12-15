@@ -6,6 +6,7 @@ public class SlugController : MonoBehaviour
 {
 
     public Rigidbody2D myRb;
+    public Animator myAnim;
 
     public float health = 3;
 
@@ -29,6 +30,7 @@ public class SlugController : MonoBehaviour
     {
         myRb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        myAnim = GetComponent<Animator>();
     }
 
     void Update()
@@ -53,6 +55,15 @@ public class SlugController : MonoBehaviour
                 fireCountdown = 0;
                 canShoot = true;
             }
+        }
+
+        if (myRb.velocity.x > .1)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (myRb.velocity.x < -.1)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
         }
     }
 
