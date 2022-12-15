@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -257,6 +258,11 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Pollen++;
+        }
+
+        if ((collision.gameObject.tag == "Teleport"))
+        {
+            gameManager.GetComponent<GameManager>().LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
