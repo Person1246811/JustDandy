@@ -4,31 +4,34 @@ using UnityEngine;
 
 public class Environment : MonoBehaviour
 {
-    public bool isBackground = false;
-    public Rigidbody2D background;
-    public float backgroundSpeed = 5;
+    public bool isParallax = false;
+    public bool isImpactDestroy = false;
+    private float startposX, startposY;
+    public GameObject cam;
+    public float parallax;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (isParallax)
+        {
+            startposX = transform.position.x;
+            startposY = transform.position.y;
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //fix bug where the background moves when the player moves against a wall
-        if (isBackground && GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity.x != 0)
+        if (isParallax)
         {
-            Vector2 tempVelocity = background.velocity;
-            tempVelocity.x = Input.GetAxisRaw("Horizontal") * backgroundSpeed;
-            background.velocity = tempVelocity;
+            transform.position = new Vector2(startposX + cam.transform.position.x * parallax, startposY + cam.transform.position.y * parallax);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Attack" && collision.gameObject.name != "Slash" && !isBackground)
+        if(collision.gameObject.tag == "Attack" && collision.gameObject.name != "Slash" && isImpactDestroy)
         {
             Destroy(collision.gameObject);
         }

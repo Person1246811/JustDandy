@@ -225,8 +225,9 @@ public class PlayerController : MonoBehaviour
             }
 
             //Snail or Slug
-            if ((collision.gameObject.tag == "Enemy4"))
+            if ((collision.gameObject.tag == "Enemy4Attack"))
             {
+                Destroy(collision.gameObject);
                 enemyAttack = false;
                 hp -= 4;
             }

@@ -27,22 +27,22 @@ public class Damage : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy1" && CanAttack)
         {
-            collision.gameObject.GetComponent<AphidController>().health--;
+            collision.gameObject.GetComponent<AphidController>().health -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().damage;
             CanAttack = false;
         }
         if (collision.gameObject.tag == "Enemy2" && CanAttack)
         {
-            collision.gameObject.GetComponent<BeetleController>().health--;
+            collision.gameObject.GetComponent<BeetleController>().health -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().damage;
             CanAttack = false;
         }
-        /*if (collision.gameObject.tag == "Enemy3" && CanAttack)
+        if (collision.gameObject.tag == "Enemy3" && CanAttack)
         {
-            collision.gameObject.GetComponent<SlugController>().health--;
+            collision.gameObject.GetComponent<SlugController>().health -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().damage;
             CanAttack = false;
         }
-        if (collision.gameObject.tag == "Enemy4" && CanAttack)
+        /*if (collision.gameObject.tag == "Enemy4" && CanAttack)
         {
-            collision.gameObject.GetComponent<SnailController>().health--;
+            collision.gameObject.GetComponent<SnailController>().health -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().damage;
             CanAttack = false;
         }*/
     }

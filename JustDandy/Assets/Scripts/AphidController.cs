@@ -76,7 +76,8 @@ public class AphidController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Attack")
         {
-            health--;
+            Destroy(collision.gameObject);
+            health -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().damage;
         }
     }
 }
