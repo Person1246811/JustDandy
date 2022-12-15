@@ -6,7 +6,8 @@ public class snailPatrol : MonoBehaviour
 {
     public float speed;
     public float distance;
-    public float health = 6;
+    public float health = 1;
+    public Rigidbody2D myRb;
 
     private bool movingRight = true;
 
@@ -39,13 +40,10 @@ public class snailPatrol : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Attack")
+        if(collision.gameObject.tag == "Attack")
         {
             health--;
         }
     }
-
-
-
 
 }
