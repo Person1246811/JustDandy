@@ -229,7 +229,7 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 enemyAttack = false;
-                hp -= 4;
+                hp -= 2;
             }
         }
     }
