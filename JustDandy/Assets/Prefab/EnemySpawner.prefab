@@ -48,7 +48,7 @@ MonoBehaviour:
   aphid: {fileID: 8295261128181538732, guid: fff6e85b4a67260448bda233424a55d5, type: 3}
   beetle: {fileID: 9200348237001717763, guid: 97fc2a3c9390ed6488d81a8b09059028, type: 3}
   slug: {fileID: 8033837351472699366, guid: 0f15494a844633b4fb66b093eb4cf54c, type: 3}
-  snail: {fileID: 0}
+  snail: {fileID: 4032700573161659531, guid: bb0a37591fe8a8247b17c8df12b6a4c0, type: 3}
   spawnSelect: 2
   spawnAmount: 3
   spawnRate: 1
