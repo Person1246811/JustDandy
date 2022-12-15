@@ -20,6 +20,7 @@ public class SlugController : MonoBehaviour
     public GameObject bullet;
 
     public float bulletSpeed = 5;
+    public float bulletLife = 1;
 
     private bool canShoot = true;
 
@@ -77,7 +78,7 @@ public class SlugController : MonoBehaviour
             b.GetComponent<Rigidbody2D>().rotation = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
             b.GetComponent<Rigidbody2D>().velocity = lookPos * bulletSpeed;
             canShoot = false;
-            Destroy(b, .9f);
+            Destroy(b, bulletLife);
         }
     }
 
