@@ -8,6 +8,7 @@ public class snailPatrol : MonoBehaviour
     public float distance;
     public float health = 1;
     public Rigidbody2D myRb;
+    public AudioClip deathClip;
 
     private bool movingRight = true;
 
@@ -35,6 +36,7 @@ public class snailPatrol : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(deathClip, transform.position);
         }
     }
 
