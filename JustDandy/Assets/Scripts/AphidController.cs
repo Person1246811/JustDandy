@@ -11,6 +11,7 @@ public class AphidController : MonoBehaviour
     public Rigidbody2D myRB;
     public float health = 1;
     public Transform player;
+    public AudioClip deathClip;
 
     int direction = 1;
 
@@ -18,6 +19,7 @@ public class AphidController : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        myRB = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -45,9 +47,19 @@ public class AphidController : MonoBehaviour
             Jump();
         }
 
+        if (myRB.velocity.x > .1)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (myRB.velocity.x < -.1)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+
         if (health <= 0)
         {
             Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(deathClip, transform.position);
         }
         
     }

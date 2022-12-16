@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 8
 --- !u!1 &8295261128181538732
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +82,7 @@ Transform:
   m_Children:
   - {fileID: 6666908374261990843}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8295261128181538735
 SpriteRenderer:
@@ -174,7 +174,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 100
   m_GravityScale: 1
@@ -182,7 +182,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8295261128181538729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,10 +195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97d4cf563fb9fe4ca72e3d46660cb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 300
+  jumpPower: 3000
   jumpRate: -1
   jumpTowards: 0
   jumpTimer: 3
   myRB: {fileID: 8295261128181538733}
   health: 1
-  player: {fileID: 0}
+  player: {fileID: 4853033308392380014, guid: 1176968b4ce0e4d4cafd335d6bfbdb76, type: 3}
+  deathClip: {fileID: 8300000, guid: 2ec0c4f0400776c4fb07c061e5bbbb07, type: 3}

@@ -40,10 +40,10 @@ public class Damage : MonoBehaviour
             collision.gameObject.GetComponent<SlugController>().health -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().damage;
             CanAttack = false;
         }
-        /*if (collision.gameObject.tag == "Enemy4" && CanAttack)
+        if (collision.gameObject.tag == "Enemy4" && CanAttack)
         {
-            collision.gameObject.GetComponent<SnailController>().health -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().damage;
+            collision.gameObject.GetComponent<snailPatrol>().health -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().damage;
             CanAttack = false;
-        }*/
+        }
     }
 }

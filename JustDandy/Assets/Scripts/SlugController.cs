@@ -6,6 +6,7 @@ public class SlugController : MonoBehaviour
 {
 
     public Rigidbody2D myRb;
+    public Animator myAnim;
 
     public float health = 3;
 
@@ -19,6 +20,7 @@ public class SlugController : MonoBehaviour
     public GameObject bullet;
 
     public float bulletSpeed = 5;
+    public float bulletLife = 1;
 
     private bool canShoot = true;
 
@@ -29,6 +31,7 @@ public class SlugController : MonoBehaviour
     {
         myRb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        myAnim = GetComponent<Animator>();
     }
 
     void Update()
@@ -54,6 +57,15 @@ public class SlugController : MonoBehaviour
                 canShoot = true;
             }
         }
+
+        if (myRb.velocity.x > .1)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (myRb.velocity.x < -.1)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -66,7 +78,7 @@ public class SlugController : MonoBehaviour
             b.GetComponent<Rigidbody2D>().rotation = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
             b.GetComponent<Rigidbody2D>().velocity = lookPos * bulletSpeed;
             canShoot = false;
-            Destroy(b, .9f);
+            Destroy(b, bulletLife);
         }
     }
 

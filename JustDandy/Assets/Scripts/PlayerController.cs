@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Crosshair;
     public GameObject slash;
     public GameObject gameManager;
+    public Animator myAnim;
 
     public float hp = 5;
     public float maxhp = 5;
@@ -37,7 +39,7 @@ public class PlayerController : MonoBehaviour
     public float glideAmount = .25f;
     private bool doubleJumpReady = true;
 
-    public float Pollen = 0;
+    public int Pollen = 0;
     public int Stage = 1;
     private bool GrowthDone = false;
     
@@ -45,8 +47,19 @@ public class PlayerController : MonoBehaviour
     {
         myRB = GetComponent<Rigidbody2D>();
         Crosshair = GameObject.Find("Crosshair");
+        slash = GameObject.Find("Slash");
         gameManager = GameObject.Find("GameManager");
         gravityScaleBase = GetComponent<Rigidbody2D>().gravityScale;
+        myAnim = GetComponent<Animator>();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            PlayerPrefs.SetFloat("Health", 5);
+            PlayerPrefs.SetInt("Stage", 1);
+            PlayerPrefs.SetInt("Pollen", 0);
+        }
+        hp = PlayerPrefs.GetFloat("Health", 5);
+        Stage = PlayerPrefs.GetInt("Stage", 1);
+        Pollen = PlayerPrefs.GetInt("Pollen", 0);
     }
     
     void Update()
@@ -153,7 +166,21 @@ public class PlayerController : MonoBehaviour
         }
 
         if (allowedToMove)
+        {
             myRB.velocity = tempVelocity;
+            if (myRB.velocity.x > .1)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+                myAnim.SetBool("isWalking", true);
+            }
+            else if (myRB.velocity.x < -.1)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+                myAnim.SetBool("isWalking", true);
+            }
+            else
+                myAnim.SetBool("isWalking", false);
+        }
         else
             myRB.velocity = new Vector2(0, 0);
 
@@ -240,6 +267,14 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Pollen++;
+        }
+
+        if ((collision.gameObject.tag == "Teleport"))
+        {
+            PlayerPrefs.SetFloat("Health", hp);
+            PlayerPrefs.SetInt("Stage", Stage);
+            PlayerPrefs.SetInt("Pollen", Pollen);
+            gameManager.GetComponent<GameManager>().LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
