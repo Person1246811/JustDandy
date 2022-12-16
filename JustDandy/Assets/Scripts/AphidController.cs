@@ -11,6 +11,7 @@ public class AphidController : MonoBehaviour
     public Rigidbody2D myRB;
     public float health = 1;
     public Transform player;
+    public AudioClip deathClip;
 
     int direction = 1;
 
@@ -58,6 +59,7 @@ public class AphidController : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(deathClip, transform.position);
         }
         
     }
