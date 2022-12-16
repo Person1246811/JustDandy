@@ -201,4 +201,5 @@ MonoBehaviour:
   jumpTimer: 3
   myRB: {fileID: 8295261128181538733}
   health: 1
-  player: {fileID: 0}
+  player: {fileID: 4853033308392380014, guid: 1176968b4ce0e4d4cafd335d6bfbdb76, type: 3}
+  deathClip: {fileID: 8300000, guid: 2ec0c4f0400776c4fb07c061e5bbbb07, type: 3}
