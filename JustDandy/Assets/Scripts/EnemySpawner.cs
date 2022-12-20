@@ -34,18 +34,22 @@ public class EnemySpawner : MonoBehaviour
             if (spawnSelect == 1)
             {
                 GameObject s = Instantiate(aphid, transform.position, Quaternion.identity);
+                Physics2D.IgnoreCollision(s.GetComponent<BoxCollider2D>(), GameObject.FindGameObjectWithTag("Enemy1").GetComponent<BoxCollider2D>());
             }
             else if (spawnSelect == 2)
             {
                 GameObject s = Instantiate(beetle, transform.position, Quaternion.identity);
+                Physics2D.IgnoreCollision(s.GetComponent<PolygonCollider2D>(), GameObject.FindGameObjectWithTag("Enemy2").GetComponent<PolygonCollider2D>());
             }
             else if (spawnSelect == 3)
             {
                 GameObject s = Instantiate(slug, transform.position, Quaternion.identity);
+                Physics2D.IgnoreCollision(s.GetComponent<BoxCollider2D>(), GameObject.FindGameObjectWithTag("Enemy3").GetComponent<BoxCollider2D>());
             }
             else if (spawnSelect == 4)
             {
                 GameObject s = Instantiate(snail, transform.position, Quaternion.identity);
+                Physics2D.IgnoreCollision(s.GetComponent<BoxCollider2D>(), GameObject.FindGameObjectWithTag("Enemy4").GetComponent<BoxCollider2D>());
             }
             spawnAmount--;
             spawn = false;

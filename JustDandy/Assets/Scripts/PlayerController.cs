@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public GameObject slash;
     public GameObject gameManager;
     public Animator myAnim;
+    public AudioClip damageSound;
+    public AudioClip jumpSound;
 
     public float hp = 5;
     public float maxhp = 5;
@@ -80,7 +82,10 @@ public class PlayerController : MonoBehaviour
         tempVelocity.x = Input.GetAxisRaw("Horizontal") * moveSpeed;
 
         if (Input.GetKeyDown(KeyCode.Space) && Physics2D.Raycast(raycastPos, Vector2.down, groundDetectDistance, 3))
+        {
             tempVelocity.y = jumpHeight;
+            GetComponent<AudioSource>().PlayOneShot(jumpSound);
+        }
 
         if (Stage >= 1)
         {
@@ -171,15 +176,11 @@ public class PlayerController : MonoBehaviour
             if (myRB.velocity.x > .1)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
-                myAnim.SetBool("isWalking", true);
             }
             else if (myRB.velocity.x < -.1)
             {
                 GetComponent<SpriteRenderer>().flipX = true;
-                myAnim.SetBool("isWalking", true);
             }
-            else
-                myAnim.SetBool("isWalking", false);
         }
         else
             myRB.velocity = new Vector2(0, 0);
@@ -235,6 +236,7 @@ public class PlayerController : MonoBehaviour
             {
                 enemyAttack = false;
                 hp--;
+                GetComponent<AudioSource>().PlayOneShot(damageSound);
             }
 
             //Beetle
@@ -242,6 +244,7 @@ public class PlayerController : MonoBehaviour
             {
                 enemyAttack = false;
                 hp -= 2;
+                GetComponent<AudioSource>().PlayOneShot(damageSound);
             }
 
             //Snail or Slug
@@ -249,6 +252,7 @@ public class PlayerController : MonoBehaviour
             {
                 enemyAttack = false;
                 hp -= 4;
+                GetComponent<AudioSource>().PlayOneShot(damageSound);
             }
 
             //Snail or Slug
@@ -257,6 +261,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 enemyAttack = false;
                 hp -= 2;
+                GetComponent<AudioSource>().PlayOneShot(damageSound);
             }
         }
     }

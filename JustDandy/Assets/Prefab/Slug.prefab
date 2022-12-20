@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: -7073020786436138461}
   m_Layer: 2
   m_Name: Slug
-  m_TagString: Untagged
+  m_TagString: Enemy3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRb: {fileID: -2563262680817373094}
+  myAnim: {fileID: 0}
   health: 3
   player: {fileID: 0}
   playerRange: 8
@@ -157,6 +158,7 @@ MonoBehaviour:
   moveSpeed: 2
   bullet: {fileID: 841005850481721854, guid: 46fb52001a666b94fa99a7d7f55b313a, type: 3}
   bulletSpeed: 4
+  bulletLife: 1
   fireRate: 1
 --- !u!50 &-2563262680817373094
 Rigidbody2D:
