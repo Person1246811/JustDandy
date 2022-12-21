@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4032700573161660272}
   - component: {fileID: 4032700573161659535}
   - component: {fileID: 4032700573161659532}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Snail
   m_TagString: Enemy4
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 25
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -135,7 +135,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4032700573161659532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
   distance: 2
   health: 6
   myRb: {fileID: 0}
+  deathClip: {fileID: 0}
   groundDetechtion: {fileID: 4032700574401009042}
 --- !u!1 &4032700574401009041
 GameObject:
@@ -162,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4032700574401009042}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: GroundDetechtion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4032700574652199630}
   - component: {fileID: 4032700574652199631}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

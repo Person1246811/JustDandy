@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1469876772}
   - component: {fileID: 1469876773}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Detection
   m_TagString: Detection
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 9200348237001717762}
   - component: {fileID: 9200348237001689086}
   - component: {fileID: 187627449}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Beetle
   m_TagString: Enemy2
   m_Icon: {fileID: 0}

@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Collision_Env
+  - Attack
+  - Teleport
+  - Enemy1
+  - Enemy2
+  - Enemy3
+  - Enemy4
+  - Enemy4Attack
+  - Detection
+  - Pollen
+  - SunLight
   layers:
   - Default
   - TransparentFX
@@ -11,7 +22,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 

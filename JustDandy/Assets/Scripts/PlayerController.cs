@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public Animator myAnim;
     public AudioClip damageSound;
     public AudioClip jumpSound;
+    public AudioClip pollenSound;
+    public AudioClip shootSound;
 
     public float hp = 5;
     public float maxhp = 5;
@@ -145,6 +147,7 @@ public class PlayerController : MonoBehaviour
                 b.GetComponent<Rigidbody2D>().rotation = angle;
                 b.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * bulletSpeed);
                 canShoot = false;
+                GetComponent<AudioSource>().PlayOneShot(shootSound);
                 Destroy(b, bulletLifespan);
                 //Shoots the Burst
                 StartCoroutine(BurstDelay(b.GetComponent<PolygonCollider2D>()));
@@ -214,7 +217,7 @@ public class PlayerController : MonoBehaviour
                     Physics2D.IgnoreCollision(firstBulletCollider, b2.GetComponent<PolygonCollider2D>());
                 b2.GetComponent<Rigidbody2D>().rotation = angle;
                 b2.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * bulletSpeed);
-                
+                GetComponent<AudioSource>().PlayOneShot(shootSound);
                 Destroy(b2, bulletLifespan);
             }
         }
@@ -272,9 +275,10 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Pollen++;
+            GetComponent<AudioSource>().PlayOneShot(pollenSound);
         }
 
-        if ((collision.gameObject.tag == "Teleport"))
+        if ((collision.gameObject.tag == "Teleport") && (GameObject.FindGameObjectsWithTag("Pollen").Length <= 0))
         {
             PlayerPrefs.SetFloat("Health", hp);
             PlayerPrefs.SetInt("Stage", Stage);
