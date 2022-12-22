@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.Mouse0) && Stage >= 3)
             {
                 GameObject b = Instantiate(bullet, transform.position, Quaternion.identity);
-                Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), b.GetComponent<PolygonCollider2D>());
+                //Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), b.GetComponent<PolygonCollider2D>());
                 b.GetComponent<Rigidbody2D>().rotation = angle;
                 b.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * bulletSpeed);
                 canShoot = false;
@@ -212,9 +212,7 @@ public class PlayerController : MonoBehaviour
             {
                 yield return new WaitForSeconds(burstRate);
                 GameObject b2 = Instantiate(bullet, transform.position, Quaternion.identity);
-                Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), b2.GetComponent<PolygonCollider2D>());
-                if (firstBulletCollider != null)
-                    Physics2D.IgnoreCollision(firstBulletCollider, b2.GetComponent<PolygonCollider2D>());
+                //Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), b2.GetComponent<PolygonCollider2D>());
                 b2.GetComponent<Rigidbody2D>().rotation = angle;
                 b2.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * bulletSpeed);
                 GetComponent<AudioSource>().PlayOneShot(shootSound);
