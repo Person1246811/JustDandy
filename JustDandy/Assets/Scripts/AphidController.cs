@@ -11,7 +11,7 @@ public class AphidController : MonoBehaviour
     public Rigidbody2D myRB;
     public float health = 1;
     public Transform player;
-    public GameObject enemyDeath;
+    private GameObject enemyDeath;
 
     int direction = 1;
 

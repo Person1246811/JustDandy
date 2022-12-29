@@ -8,6 +8,7 @@ public class BeetleController : MonoBehaviour
     public bool nonFollow = true;
 
     public Rigidbody2D myRb;
+    private GameObject enemyDeath;
 
     public float moveSpeed;
     public float targetTime = 10.0f;
@@ -22,6 +23,7 @@ public class BeetleController : MonoBehaviour
     {
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
         myRb = GetComponent<Rigidbody2D>();
+        enemyDeath = GameObject.Find("enemy death");
     }
 
     // Update is called once per frame
@@ -62,6 +64,7 @@ public class BeetleController : MonoBehaviour
 
         if (health <= 0)
         {
+            enemyDeath.GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         }
     }
