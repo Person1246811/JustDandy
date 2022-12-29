@@ -16,6 +16,7 @@ public class snailPatrol : MonoBehaviour
 
     private void Start()
     {
+        myRb = GetComponent<Rigidbody2D>();
         enemyDeath = GameObject.Find("enemy death");
     }
 
