@@ -285,6 +285,12 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetInt("Pollen", Pollen);
             gameManager.GetComponent<GameManager>().LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
         }
+
+        if ((collision.gameObject.tag == "TutorialText"))
+        {
+            Destroy(GameObject.Find("Tutorial"));
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

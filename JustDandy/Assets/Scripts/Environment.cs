@@ -7,7 +7,7 @@ public class Environment : MonoBehaviour
     public bool isParallax = false;
     public bool isImpactDestroy = false;
     private float startposX, startposY;
-    public GameObject cam;
+    private GameObject cam;
     public float parallax;
 
     // Start is called before the first frame update
