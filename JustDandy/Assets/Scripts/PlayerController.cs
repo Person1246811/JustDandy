@@ -11,11 +11,11 @@ public class PlayerController : MonoBehaviour
     public GameObject slash;
     public GameObject gameManager;
     public Animator myAnim;
-    public AudioClip damageSound;
-    public AudioClip jumpSound;
-    public AudioClip pollenSound;
-    public AudioClip shootSound;
-    public AudioClip smackSound;
+    public GameObject jumpSound;
+    public GameObject shootSound;
+    public GameObject pollenSound;
+    public GameObject damageSound;
+    public GameObject smackSound;
     public bool paused = false;
 
     public float hp = 5;
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Physics2D.Raycast(raycastPos, Vector2.down, groundDetectDistance, 3) && !paused)
         {
             tempVelocity.y = jumpHeight;
-            GetComponent<AudioSource>().PlayOneShot(jumpSound);
+            jumpSound.GetComponent<AudioSource>().Play();
         }
 
         if (Stage >= 1)
@@ -119,6 +119,7 @@ public class PlayerController : MonoBehaviour
                 hp = 10;
                 maxhp = 10;
                 damage = 1;
+                myAnim.SetInteger(Stage, Stage);
                 GrowthDone = true;
             }
         }
@@ -128,6 +129,7 @@ public class PlayerController : MonoBehaviour
             hp = 15;
             maxhp = 15;
             damage = 2;
+            myAnim.SetInteger(Stage, Stage);
             GrowthDone = true;
         }
 
@@ -136,6 +138,7 @@ public class PlayerController : MonoBehaviour
             hp = 20;
             maxhp = 20;
             damage = 2;
+            myAnim.SetInteger(Stage, Stage);
             GrowthDone = true;
         }
 
@@ -148,7 +151,7 @@ public class PlayerController : MonoBehaviour
                 b.GetComponent<Rigidbody2D>().rotation = angle;
                 b.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * bulletSpeed);
                 canShoot = false;
-                GetComponent<AudioSource>().PlayOneShot(shootSound);
+                shootSound.GetComponent<AudioSource>().Play();
                 Destroy(b, bulletLifespan);
                 //Shoots the Burst
                 StartCoroutine(BurstDelay(b.GetComponent<PolygonCollider2D>()));
@@ -159,7 +162,7 @@ public class PlayerController : MonoBehaviour
                 slash.GetComponent<SpriteRenderer>().enabled = true;
                 slash.GetComponent<CapsuleCollider2D>().enabled = true;
                 canShoot = false;
-                GetComponent<AudioSource>().PlayOneShot(smackSound);
+                smackSound.GetComponent<AudioSource>().Play();
                 // Add delay to slash staying active
                 StartCoroutine(SlashOff(slash));
             }
@@ -217,7 +220,7 @@ public class PlayerController : MonoBehaviour
                 //Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), b2.GetComponent<PolygonCollider2D>());
                 b2.GetComponent<Rigidbody2D>().rotation = angle;
                 b2.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * bulletSpeed);
-                GetComponent<AudioSource>().PlayOneShot(shootSound);
+                shootSound.GetComponent<AudioSource>().Play();
                 Destroy(b2, bulletLifespan);
             }
         }
@@ -239,7 +242,7 @@ public class PlayerController : MonoBehaviour
             {
                 enemyAttack = false;
                 hp--;
-                GetComponent<AudioSource>().PlayOneShot(damageSound);
+                damageSound.GetComponent<AudioSource>().Play();
             }
 
             //Beetle
@@ -247,7 +250,7 @@ public class PlayerController : MonoBehaviour
             {
                 enemyAttack = false;
                 hp -= 2;
-                GetComponent<AudioSource>().PlayOneShot(damageSound);
+                damageSound.GetComponent<AudioSource>().Play();
             }
 
             //Snail or Slug
@@ -255,7 +258,7 @@ public class PlayerController : MonoBehaviour
             {
                 enemyAttack = false;
                 hp -= 4;
-                GetComponent<AudioSource>().PlayOneShot(damageSound);
+                damageSound.GetComponent<AudioSource>().Play();
             }
 
             //Snail or Slug
@@ -264,7 +267,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 enemyAttack = false;
                 hp -= 2;
-                GetComponent<AudioSource>().PlayOneShot(damageSound);
+                damageSound.GetComponent<AudioSource>().Play();
             }
         }
     }
@@ -275,7 +278,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Pollen++;
-            GetComponent<AudioSource>().PlayOneShot(pollenSound);
+            pollenSound.GetComponent<AudioSource>().Play();
         }
 
         if ((collision.gameObject.tag == "Teleport") && (GameObject.FindGameObjectsWithTag("Pollen").Length <= 0))

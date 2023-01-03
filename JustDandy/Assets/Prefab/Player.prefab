@@ -106,17 +106,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f61e5a19c72dded4d9140bf67e59f9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myRB: {fileID: 0}
+  myRB: {fileID: 4853033308392380002}
   bullet: {fileID: 841005850481721854, guid: aa8e36725812edb4ea825246f77e1816, type: 3}
   Crosshair: {fileID: 0}
   slash: {fileID: 3684221814501714360}
   gameManager: {fileID: 0}
-  myAnim: {fileID: 0}
-  damageSound: {fileID: 8300000, guid: 2ab36a68f6d4c6c47a4a0f8bfb5548af, type: 3}
-  jumpSound: {fileID: 8300000, guid: c58ffe55658485a4fbdb47349f7d3b2a, type: 3}
-  pollenSound: {fileID: 8300000, guid: c770f70ff033c56458fee0542e3db3e0, type: 3}
-  shootSound: {fileID: 8300000, guid: 9d8d0af2a48c8ca408c0566511d032c6, type: 3}
-  smackSound: {fileID: 8300000, guid: 4734a0df1d4928b4bad5c482e39d8c8d, type: 3}
+  myAnim: {fileID: 4387410946419535469}
+  jumpSound: {fileID: 0}
+  shootSound: {fileID: 0}
+  pollenSound: {fileID: 0}
+  damageSound: {fileID: 0}
+  smackSound: {fileID: 0}
   paused: 0
   hp: 5
   maxhp: 5

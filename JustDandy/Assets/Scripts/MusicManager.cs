@@ -12,6 +12,10 @@ public class MusicManager : MonoBehaviour
     public void ChangeMusicVolume(float slidervalue)
     {
         music.SetFloat("MusicVol", Mathf.Log10(slidervalue) * 20);
+        PlayerPrefs.SetFloat("Music", slidervalue);
     }
-
+    public void Start()
+    {
+        float slidervalue = PlayerPrefs.GetFloat("Music");
+    }
 }
