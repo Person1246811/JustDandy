@@ -12,5 +12,11 @@ public class SfxManager : MonoBehaviour
     public void ChangeSfxVolume(float slidervalue)
     {
         Sound.SetFloat("SfxVol", Mathf.Log10(slidervalue) * 20);
+        PlayerPrefs.SetFloat("SFX", slidervalue);
+    }
+
+    public void Start()
+    {
+        float slidervalue = PlayerPrefs.GetFloat("SFX");
     }
 }
