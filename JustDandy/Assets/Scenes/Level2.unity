@@ -6970,7 +6970,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isParallax: 1
   isImpactDestroy: 0
-  cam: {fileID: 924468658}
   parallax: 0.5
 --- !u!212 &734840519
 SpriteRenderer:
@@ -8484,7 +8483,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isParallax: 0
   isImpactDestroy: 1
-  cam: {fileID: 0}
   parallax: 0
 --- !u!66 &1443381500
 CompositeCollider2D:
