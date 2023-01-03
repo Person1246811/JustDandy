@@ -7,6 +7,7 @@ public class SlugController : MonoBehaviour
 
     public Rigidbody2D myRb;
     public Animator myAnim;
+    private GameObject enemyDeath;
 
     public float health = 3;
 
@@ -32,6 +33,7 @@ public class SlugController : MonoBehaviour
         myRb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         myAnim = GetComponent<Animator>();
+        enemyDeath = GameObject.Find("enemy death");
     }
 
     void Update()
@@ -46,7 +48,10 @@ public class SlugController : MonoBehaviour
         }
 
         if (health <= 0)
+        {
+            enemyDeath.GetComponent<AudioSource>().Play();
             Destroy(gameObject);
+        }
 
         if (!canShoot)
         {

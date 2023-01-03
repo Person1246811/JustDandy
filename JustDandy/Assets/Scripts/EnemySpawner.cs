@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     public int spawnSelect = 1;
     public int spawnAmount = 1;
-    
+
     public float spawnRate = 1;
     private float spawnCountdown = 0;
     public bool spawn = false;
@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -32,20 +32,20 @@ public class EnemySpawner : MonoBehaviour
         if (spawn && canSpawn)
         {
             if (spawnSelect == 1)
-            {
-                GameObject s = Instantiate(aphid, transform.position, Quaternion.identity);
+            { 
+                GameObject s = Instantiate(aphid, transform.position, Quaternion.identity); 
             }
             else if (spawnSelect == 2)
-            {
-                GameObject s = Instantiate(beetle, transform.position, Quaternion.identity);
+            { 
+                GameObject s = Instantiate(beetle, transform.position, Quaternion.identity); 
             }
             else if (spawnSelect == 3)
-            {
+            { 
                 GameObject s = Instantiate(slug, transform.position, Quaternion.identity);
             }
             else if (spawnSelect == 4)
-            {
-                GameObject s = Instantiate(snail, transform.position, Quaternion.identity);
+            { 
+                GameObject s = Instantiate(snail, transform.position, Quaternion.identity); 
             }
             spawnAmount--;
             spawn = false;

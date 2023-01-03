@@ -8,17 +8,23 @@ public class snailPatrol : MonoBehaviour
     public float distance;
     public float health = 1;
     public Rigidbody2D myRb;
-    public AudioClip deathClip;
+    private GameObject enemyDeath;
 
     private bool movingRight = true;
 
-    public Transform groundDetechtion;
+    public Transform groundDetection;
+
+    private void Start()
+    {
+        myRb = GetComponent<Rigidbody2D>();
+        enemyDeath = GameObject.Find("enemy death");
+    }
 
     private void Update()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetechtion.position, Vector2.down, distance);
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
         if (groundInfo.collider == false)
         {
             if(movingRight == true)
@@ -35,8 +41,8 @@ public class snailPatrol : MonoBehaviour
 
         if (health <= 0)
         {
+            enemyDeath.GetComponent<AudioSource>().Play();
             Destroy(gameObject);
-            AudioSource.PlayClipAtPoint(deathClip, transform.position);
         }
     }
 

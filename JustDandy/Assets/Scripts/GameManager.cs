@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     {
         
 
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 4)
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
             healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 4)
         {
             healthBar.fillAmount = player.hp / player.maxhp;
             stageText.text = "Stage: " + player.Stage.ToString();
