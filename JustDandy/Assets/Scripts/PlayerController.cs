@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D myRB;
     public GameObject bullet;
-    public GameObject Crosshair;
     public GameObject slash;
     public GameObject gameManager;
     public Animator myAnim;
@@ -51,7 +50,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
-        Crosshair = GameObject.Find("Crosshair");
         slash = GameObject.Find("Slash");
         gameManager = GameObject.Find("GameManager");
         gravityScaleBase = GetComponent<Rigidbody2D>().gravityScale;
@@ -77,8 +75,6 @@ public class PlayerController : MonoBehaviour
         angle = (Mathf.Atan2(distance.x, distance.y) * Mathf.Rad2Deg) + 180;
 
         slash.GetComponent<Rigidbody2D>().rotation = angle;
-
-        Crosshair.transform.position = new Vector2(mousePos.x, mousePos.y);
 
         Vector2 raycastPos = new Vector2(transform.position.x, transform.position.y - .51f);
         Vector2 tempVelocity = myRB.velocity;
