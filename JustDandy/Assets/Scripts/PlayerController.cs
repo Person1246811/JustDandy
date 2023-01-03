@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     public float glideAmount = .25f;
     private bool doubleJumpReady = true;
 
-    public float Pollen = 0;
+    public int Pollen = 0;
     public int Stage = 1;
     private bool GrowthDone = false;
     
@@ -51,6 +51,15 @@ public class PlayerController : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
         gravityScaleBase = GetComponent<Rigidbody2D>().gravityScale;
         myAnim = GetComponent<Animator>();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            PlayerPrefs.SetFloat("Health", 5);
+            PlayerPrefs.SetInt("Stage", 1);
+            PlayerPrefs.SetInt("Pollen", 0);
+        }
+        hp = PlayerPrefs.GetFloat("Health", 5);
+        Stage = PlayerPrefs.GetInt("Stage", 1);
+        Pollen = PlayerPrefs.GetInt("Pollen", 0);
     }
     
     void Update()
@@ -262,6 +271,9 @@ public class PlayerController : MonoBehaviour
 
         if ((collision.gameObject.tag == "Teleport"))
         {
+            PlayerPrefs.SetFloat("Health", hp);
+            PlayerPrefs.SetInt("Stage", Stage);
+            PlayerPrefs.SetInt("Pollen", Pollen);
             gameManager.GetComponent<GameManager>().LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
