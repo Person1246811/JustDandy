@@ -49,17 +49,11 @@ public class BeetleController : MonoBehaviour
         {
             Vector2 lookPos = target.position - transform.position;
             myRb.rotation = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
-            
+            if (myRb.velocity.x > .1)
+                GetComponent<SpriteRenderer>().flipY = false;
+            else if (myRb.velocity.x < -.1)
+                GetComponent<SpriteRenderer>().flipY = true;
             myRb.velocity = lookPos * moveSpeed;
-        }
-
-        if (myRb.velocity.x > .1)
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else if (myRb.velocity.x < -.1)
-        {
-            GetComponent<SpriteRenderer>().flipX = true;
         }
 
         if (health <= 0)
@@ -78,7 +72,15 @@ public class BeetleController : MonoBehaviour
     void Flip()
     {
         isPatrol = false;
-        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+        //transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+        if (GetComponent<SpriteRenderer>().flipX)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (!GetComponent<SpriteRenderer>().flipX)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
         patrolSpeed *= -1;
         isPatrol = true;
     }
