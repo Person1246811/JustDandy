@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
                 hp = 10;
                 maxhp = 10;
                 damage = 1;
-                myAnim.SetInteger(Stage, Stage);
+                myAnim.SetInteger("Stage", Stage);
                 GrowthDone = true;
             }
         }
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
             hp = 15;
             maxhp = 15;
             damage = 2;
-            myAnim.SetInteger(Stage, Stage);
+            myAnim.SetInteger("Stage", Stage);
             GrowthDone = true;
         }
 
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
             hp = 20;
             maxhp = 20;
             damage = 2;
-            myAnim.SetInteger(Stage, Stage);
+            myAnim.SetInteger("Stage", Stage);
             GrowthDone = true;
         }
 
