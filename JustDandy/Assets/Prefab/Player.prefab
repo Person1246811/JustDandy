@@ -40,7 +40,7 @@ Transform:
   m_Children:
   - {fileID: 7461746149018936078}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4853033308392380013
 SpriteRenderer:
@@ -108,7 +108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRB: {fileID: 4853033308392380002}
   bullet: {fileID: 841005850481721854, guid: aa8e36725812edb4ea825246f77e1816, type: 3}
-  Crosshair: {fileID: 0}
   slash: {fileID: 3684221814501714360}
   gameManager: {fileID: 0}
   myAnim: {fileID: 4387410946419535469}
@@ -685,6 +684,14 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1552470047955675872, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552470047955675872, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552470047955675872, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -739,7 +746,7 @@ PrefabInstance:
     - target: {fileID: 8226869640623970586, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -9095717837082945937, guid: 439a4639daf30e340a2c3c685698ea2f, type: 3}
+      objectReference: {fileID: -435082265, guid: aa41644d231348045ab6736787541d8e, type: 3}
     - target: {fileID: 8226869640623970586, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
       propertyPath: m_Enabled
       value: 0

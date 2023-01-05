@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5708977262752294022
 SpriteRenderer:
@@ -99,9 +99,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.029154122, y: 0.013455778}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2734948
 --- !u!50 &6262055855393112337
 Rigidbody2D:
   serializedVersion: 4
