@@ -115,7 +115,6 @@ public class PlayerController : MonoBehaviour
                 hp = 10;
                 maxhp = 10;
                 damage = 1;
-                myAnim.SetInteger("Stage", Stage);
                 GrowthDone = true;
             }
         }
@@ -125,7 +124,6 @@ public class PlayerController : MonoBehaviour
             hp = 15;
             maxhp = 15;
             damage = 2;
-            myAnim.SetInteger("Stage", Stage);
             GrowthDone = true;
         }
 
@@ -134,7 +132,6 @@ public class PlayerController : MonoBehaviour
             hp = 20;
             maxhp = 20;
             damage = 2;
-            myAnim.SetInteger("Stage", Stage);
             GrowthDone = true;
         }
 
@@ -157,6 +154,7 @@ public class PlayerController : MonoBehaviour
             {
                 slash.GetComponent<SpriteRenderer>().enabled = true;
                 slash.GetComponent<CapsuleCollider2D>().enabled = true;
+                slash.GetComponent<Animator>().SetBool("SlashAnim", true);
                 canShoot = false;
                 smackSound.GetComponent<AudioSource>().Play();
                 // Add delay to slash staying active
@@ -199,6 +197,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        myAnim.SetInteger("Stage", Stage);
+
         if (hp <= 0)
         {
             gameManager.GetComponent<GameManager>().LoadLevel(1);
@@ -227,6 +227,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(SlashOffRate);
         slash.GetComponent<SpriteRenderer>().enabled = false;
         slash.GetComponent<CapsuleCollider2D>().enabled = false;
+        slash.GetComponent<Animator>().SetBool("SlashAnim", false);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

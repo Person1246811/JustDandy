@@ -40,7 +40,7 @@ Transform:
   m_Children:
   - {fileID: 7461746149018936078}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4853033308392380013
 SpriteRenderer:
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -958469849, guid: b209666b23bd60e42b899edbe1b7e8fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -685,11 +685,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1552470047955675872, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1552470047955675872, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1552470047955675872, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -793,8 +793,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0.6848257, y: 0.054867372}
+  m_Size: {x: 0.4634217, y: 1.0568018}
   m_Direction: 0
 --- !u!232 &8216265419726117977
 DistanceJoint2D:
@@ -815,6 +815,26 @@ DistanceJoint2D:
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_MaxDistanceOnly: 0
+--- !u!95 &1291159529
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3684221814501714360}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f23f618da3169a5449100b11b4b054d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &7461746149018936078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1552470047955675872, guid: 5dda71a543016fd43aecd29501d5f2f5, type: 3}

@@ -23367,10 +23367,6 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4853033308392380012, guid: 1176968b4ce0e4d4cafd335d6bfbdb76, type: 3}
-      propertyPath: Crosshair
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4853033308392380012, guid: 1176968b4ce0e4d4cafd335d6bfbdb76, type: 3}
       propertyPath: jumpSound
       value: 
       objectReference: {fileID: 1983016562}
