@@ -3,6 +3,3 @@ In this wacky plant Roguelike game you play as a humble dandelion who's trying t
 
 GDD:
 https://docs.google.com/document/d/1RGaRtZSKrKsyLZJ-jHxjTB7HYrV6SJtM/edit#heading=h.2et92p0
-
-Post Mortem:
-https://www.canva.com/design/DAFSmDDcpEk/rySBM1yhe7PsLI9wPuqpDw/edit?utm_content=DAFSmDDcpEk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
