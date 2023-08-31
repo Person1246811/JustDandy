@@ -8,3 +8,4 @@ Post Mortem:
 https://www.canva.com/design/DAFSmDDcpEk/rySBM1yhe7PsLI9wPuqpDw/edit?utm_content=DAFSmDDcpEk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 # Gameplay
+![](https://github.com/Person1246811/JustDandy/blob/main/ezgif.com-video-to-gif.gif)
